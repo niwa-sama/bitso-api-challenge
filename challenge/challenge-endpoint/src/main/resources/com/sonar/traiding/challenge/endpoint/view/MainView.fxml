@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TextField?>
+<?import com.sonar.traiding.challenge.endpoint.view.*?>
+
+<!--<?import com.sonar.traiding.challenge.endpoint.view.FormattedCellFactory?>-->
+
+<AnchorPane focusTraversable="true" maxHeight="600.0" maxWidth="1100.0" minHeight="700.0" minWidth="1100.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="207.0" layoutY="85.0" prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="700.0" prefWidth="450.0">
+               <children>
+                  <HBox prefHeight="30.0" prefWidth="450.0" style="-fx-background-color: #1095dd;">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="270.0" text="Best bids and ask" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="90.0" text="Show" textAlignment="RIGHT" textFill="WHITE">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="cbBestBidsSize" editable="true" onAction="#onActionCbBestBidsSize" prefHeight="30.0" prefWidth="90.0" value="10">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="10" />
+                                 <String fx:value="20" />
+                                 <String fx:value="30" />
+                                 <String fx:value="40" />
+                                 <String fx:value="50" />
+                              </FXCollections>
+                           </items>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <editor alignment="CENTER_RIGHT">
+                           </editor>
+                           <!--
+                           <cellFactory>
+                           	<FormattedCellFactory alignment="CENTER_RIGHT" />
+                           </cellFactory>
+                           -->
+                        </ComboBox>
+                     </children>
+                  </HBox>
+                  <Label layoutY="30.0" prefHeight="30.0" prefWidth="450.0" style="-fx-background-color: #32b7ee;" text="Bids" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <TableView fx:id="tblBestBids" layoutY="60.0" prefHeight="305.0" prefWidth="450.0">
+                     <columns>
+                        <TableColumn editable="false" maxWidth="250.0" minWidth="150.0" prefWidth="150.0" sortable="false" text="Order ID">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="orderID" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                        <TableColumn editable="false" maxWidth="200.0" minWidth="125.0" prefWidth="125.0" sortable="false" text="Price">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="priceFormatted" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn maxWidth="200.0" minWidth="175.0" prefWidth="175.0" text="Amount">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="amountFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                     </columns>
+                  </TableView>
+                  <Label prefHeight="30.0" prefWidth="450.0" style="-fx-background-color: #32b7ee;" text="Asks" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <TableView fx:id="tblBestAsks" prefHeight="305.0" prefWidth="450.0">
+                     <columns>
+                        <TableColumn editable="false" maxWidth="250.0" minWidth="150.0" prefWidth="150.0" sortable="false" text="Order ID">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="orderID" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn editable="false" maxWidth="200.0" minWidth="125.0" prefWidth="125.0" sortable="false" text="Price">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="priceFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                        <TableColumn maxWidth="200.0" minWidth="175.0" prefWidth="175.0" text="Amount">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="amountFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox layoutY="350.0" prefHeight="600.0" prefWidth="650.0">
+               <children>
+                  <HBox prefHeight="30.0" prefWidth="650.0" style="-fx-background-color: #1095dd;">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="350.0" text="Last trades" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="200.0" text="Show (MAX 100)" textAlignment="RIGHT" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <ComboBox fx:id="cbRecentOperSize" editable="true" onAction="#onActionCbRecentOperSize" prefHeight="30.0" prefWidth="100.0" promptText="Only numbers (MAX: 100)" value="10">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <items>
+                           	<FXCollections fx:factory="observableArrayList">
+                           		<String fx:value="10" />
+                           		<String fx:value="20" />
+                           		<String fx:value="30" />
+                           		<String fx:value="40" />
+                           		<String fx:value="50" />
+                           	</FXCollections>
+                           </items>
+                           <editor alignment="CENTER_RIGHT">
+                           </editor>
+                           <!--
+                           <cellFactory>
+                           	<FormattedCellFactory alignment="CENTER_RIGHT" />
+                           </cellFactory>
+                           -->
+                        </ComboBox>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tblRecentOperation" prefHeight="370.0" prefWidth="650.0">
+                    <columns>
+                        <TableColumn editable="false" maxWidth="130.0" minWidth="90.0" prefWidth="90.0" sortable="false" text="ID">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="tradeID" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                        <TableColumn editable="false" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" sortable="false" text="Marker side">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="markerSide" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                        <TableColumn editable="false" maxWidth="200.0" minWidth="120.0" prefWidth="120.0" sortable="false" text="Price">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="priceFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                        <TableColumn editable="false" maxWidth="200.0" minWidth="120.0" prefWidth="120.0" sortable="false" text="Amount">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="amountFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <!--
+                      <TableColumn editable="false" prefWidth="75.0" sortable="false" text="Book">
+                            	<cellValueFactory>
+                            		<PropertyValueFactory property="book" />
+                            	</cellValueFactory>
+                            </TableColumn>
+                            -->
+                      <TableColumn editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" sortable="false" text="Created at">
+                      	<cellValueFactory>
+                      		<PropertyValueFactory property="createdAtFormatted" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                    </columns>
+                  </TableView>
+                  <Label alignment="CENTER_RIGHT" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="* Blue trades are virtual" textFill="BLUE">
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="650.0" style="-fx-background-color: #32b7ee;" text="Configuration for virtual trades" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <HBox prefHeight="30.0" prefWidth="650.0">
+                     <children>
+                        <TextField fx:id="tfUpticks" alignment="CENTER_RIGHT" onKeyTyped="#onKeyTypedOnlyDigits" prefHeight="30.0" prefWidth="100.0" promptText="Only digits" text="3">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="130.0" text="upticks to sell" textAlignment="RIGHT">
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="tfBitcoinsSell" alignment="CENTER_RIGHT" onKeyTyped="#onKeyTypedOnlyDigitsAndDot" prefHeight="30.0" prefWidth="120.0" text="1" />
+                        <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="130.0" text="bitcoins" textAlignment="RIGHT">
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="521.0" prefHeight="30.0" prefWidth="650.0">
+                     <children>
+                        <TextField fx:id="tfDownticks" alignment="CENTER_RIGHT" onKeyTyped="#onKeyTypedOnlyDigits" prefHeight="30.0" prefWidth="100.0" promptText="Only digits" text="3">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="130.0" text="downticks to buy" textAlignment="RIGHT">
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfBitcoinsBuy" alignment="CENTER_RIGHT" onKeyTyped="#onKeyTypedOnlyDigitsAndDot" prefHeight="30.0" prefWidth="120.0" text="1" />
+                        <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="130.0" text="bitcoins" textAlignment="RIGHT">
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="25.0">
+                     <children>
+                        <CheckBox fx:id="ckbIgnoreZeroTicks" mnemonicParsing="false" prefHeight="24.0" selected="true" text="Ignore Zero-ticks">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <ImageView fx:id="imgZeroTicksHelp" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="15.0" top="3.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="btnApply" mnemonicParsing="false" onAction="#onActionApply" prefWidth="80.0" text="Apply">
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
