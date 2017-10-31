@@ -55,7 +55,7 @@ java -jar challenge-endpoint-jfx.jar
 2. Request a book snapshot over REST
   * **File name:** com.sonar.traiding.challenge.endpoint.controller.Controller
   * **Method name:** webSocketConnection() - Lines 129-162
-  * **Explanation:** The request for book snapshot is executed after the WebSocket connection is successfully created.
+  * **Explanation:** The request for book snapshot is executed after the WebSocket connection is successfully created.
 
 3. Listen for diff-orders over WebSocket
   * **File name:** com.sonar.traiding.challenge.core.bitso.websocket.BitsoWebSocketClient
